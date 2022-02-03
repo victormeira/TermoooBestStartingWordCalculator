@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="WeCantSpell.Hunspell" />
+    <None Remove="Dicionario\pt_BR.dic" />
+    <None Remove="Dicionario\PalavrasDe5Letras.txt" />
+    <None Remove="Dicionario\pt_BR.aff" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WeCantSpell.Hunspell" Version="3.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dicionario\pt_BR.dic" />
+    <Content Include="**/*" />
+    <Content Include="**/*" />
+  </ItemGroup>
+</Project>
