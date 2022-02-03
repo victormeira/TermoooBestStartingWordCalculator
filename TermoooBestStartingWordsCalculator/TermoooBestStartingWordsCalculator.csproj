@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <None Remove="WeCantSpell.Hunspell" />
-    <None Remove="Dicionario\pt_BR.dic" />
     <None Remove="Dicionario\PalavrasDe5Letras.txt" />
     <None Remove="Dicionario\pt_BR.aff" />
   </ItemGroup>
@@ -17,8 +16,21 @@
     <PackageReference Include="WeCantSpell.Hunspell" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dicionario\pt_BR.dic" />
     <Content Include="**/*" />
     <Content Include="**/*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="AuxiliaryFiles\pt_BR.dic">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="AuxiliaryFiles\palavrasCertas.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="AuxiliaryFiles\PalavrasDe5Letras.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="AuxiliaryFiles\pt_BR.aff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

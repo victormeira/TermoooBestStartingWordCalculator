@@ -11,12 +11,7 @@ namespace TermoooBestStartingWordsCalculator
             Dictionary<string, double> rankingOfScorePerFiveLetterWord = new Dictionary<string, double>();
 
             List<string> fiveLetterWords = GenerateFiveLetterWordsDictionary();
-            List<string> termoooWords = new List<string>()
-            {
-                "motim",
-                "monta",
-                "tonta"
-            };
+            List<string> termoooWords = File.ReadAllLines("./AuxiliaryFiles/palavrasCertas.txt").ToList();
 
             foreach(string word in fiveLetterWords)
             {
@@ -63,16 +58,13 @@ namespace TermoooBestStartingWordsCalculator
 
         static double CalculateAverageTermoooScoreForWord(string guessWord, List<string> listOfFiveLetterWords)
         {
-            double totalScore          = 0;
-            int     totalProcessedWords = 0;
-
+            double totalScore = 0;
             foreach(string possibleFiveLetterWord in listOfFiveLetterWords)
             {
-                totalProcessedWords++;
                 totalScore += CalculateTermooScoreForWord(guessWord, possibleFiveLetterWord);
             }
 
-            return totalScore / totalProcessedWords++;
+            return totalScore / listOfFiveLetterWords.Count;
         }
 
         static double CalculateTermooScoreForWord(string guessWord, string correctWord)
@@ -95,15 +87,15 @@ namespace TermoooBestStartingWordsCalculator
 
         static List<string> GenerateFiveLetterWordsDictionary()
         {
-            if (File.Exists("./Dicionario/PalavrasDe5Letras.txt"))
+            if (File.Exists("./AuxiliaryFiles/PalavrasDe5Letras.txt"))
             {
                 Console.WriteLine("Loaded five letter words from file.");
-                return File.ReadAllLines("./Dicionario/PalavrasDe5Letras.txt").ToList();
+                return File.ReadAllLines("./AuxiliaryFiles/PalavrasDe5Letras.txt").ToList();
             }
 
-            StreamWriter sw = new StreamWriter("./Dicionario/PalavrasDe5Letras.txt");
+            StreamWriter sw = new StreamWriter("./AuxiliaryFiles/PalavrasDe5Letras.txt");
 
-            var dictionary = WordList.CreateFromFiles(@"./Dicionario/pt_BR.dic");
+            var dictionary = WordList.CreateFromFiles(@"./AuxiliaryFiles/pt_BR.dic");
             List<string> fiveLetterWords = new List<string>();
 
             int totalProcessed = 0;
